@@ -29,6 +29,9 @@ public:
 	bool operator==(DomCard &);
 	unsigned short operator[](int);
 	unsigned short getSide(int);
+	void markPlayed();
+	void unmarkPlayed();
+	bool isPlayed();
 
 private:
 	unsigned short *_sides;

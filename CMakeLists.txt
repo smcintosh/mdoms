@@ -3,4 +3,7 @@ project (mdoms)
 
 set (CMAKE_BUILD_TYPE debug)
 
-add_library (deck STATIC libs/deck/domcard.cpp libs/deck/domdeck.cpp)
+add_library (deck STATIC
+	libs/deck/domcard.cpp
+	libs/deck/domdeck.cpp
+	libs/deck/domhand.cpp)

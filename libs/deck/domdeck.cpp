@@ -51,6 +51,37 @@ DomDeck::DomDeck(
 	delete vals;
 }
 
+#define NUM_PLAYERS	4
+bool
+DomDeck::getHands(
+	std::vector<DomHand *> *hands)
+{
+	int i = 0;
+	int j = 0;
+	int cardsPerHand = _cards->size() / NUM_PLAYERS;
+	DomHand *hand;
+
+	shuffle();
+	
+	for (; i<NUM_PLAYERS; ++i) {
+		hand = new DomHand();
+
+		for (; j<cardsPerHand; ++j) {
+			hand->addCard(_cards->at(i*cardsPerHand+j));
+		}
+
+		hands->push_back(hand);
+	}
+
+	return true;
+}
+
+void
+DomDeck::shuffle()
+{
+	return;
+}
+
 DomDeck::~DomDeck()
 {
 	while( _cards->size() > 0 ) {

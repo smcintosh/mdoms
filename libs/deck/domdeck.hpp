@@ -21,6 +21,7 @@
 
 #include <vector>
 #include "domcard.hpp"
+#include "domhand.hpp"
 
 enum decktype_t {
 	STD_DECK = 0,
@@ -31,9 +32,12 @@ class DomDeck {
 public:
 	DomDeck(enum decktype_t);
 	~DomDeck();
+	bool getHands(std::vector<DomHand *> *);
 
 private:
 	std::vector<DomCard *> *_cards;
+
+	void shuffle(void);
 };
 
 #endif // DOMDECK_HPP

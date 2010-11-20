@@ -72,3 +72,21 @@ DomCard::getSide(
 
 	return (_sides[n]);
 }
+
+void
+DomCard::markPlayed()
+{
+	_played = true;
+}
+
+void
+DomCard::unmarkPlayed()
+{
+	_played = false;
+}
+
+bool
+DomCard::isPlayed()
+{
+	return _played;
+}
