@@ -17,7 +17,7 @@
  */
 
 #include <stdio.h>
-#include "domcard.hpp"
+#include "mdoms/domcard.hpp"
 
 DomCard::DomCard(
 	unsigned short sides[])

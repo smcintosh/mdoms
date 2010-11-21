@@ -16,28 +16,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DOMDECK_HPP
-#define DOMDECK_HPP
+#ifndef DOMHAND_HPP
+#define DOMHAND_HPP
 
 #include <vector>
-#include "domcard.hpp"
-#include "domhand.hpp"
+#include "mdoms/domcard.hpp"
 
-enum decktype_t {
-	STD_DECK = 0,
-	NINE_DECK = 1
-};
-
-class DomDeck {
+class DomHand {
 public:
-	DomDeck(enum decktype_t);
-	~DomDeck();
-	bool getHands(std::vector<DomHand *> *);
+	DomHand();
+	~DomHand();
+	bool addCard(DomCard *);
+	bool playCard(int);
+	bool isFinished();
 
 private:
-	std::vector<DomCard *> *_cards;
-
-	void shuffle(void);
+	std::vector<DomCard *> *_hand;
 };
 
-#endif // DOMDECK_HPP
+#endif // DOMHAND_HPP

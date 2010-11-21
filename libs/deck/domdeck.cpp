@@ -17,7 +17,7 @@
  */
 
 #include <iostream>
-#include "domdeck.hpp"
+#include "mdoms/domdeck.hpp"
 
 DomDeck::DomDeck(
 	enum decktype_t type)
