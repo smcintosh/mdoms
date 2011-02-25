@@ -59,25 +59,4 @@ extends TestCase
 		assertTrue(card.getS1() == 1);
 		assertTrue(card.getS2() == 2);
 	}
-
-	/**
-	 * Make sure comparable returns true when sides match, false otherwise
-	 */
-	public void testDomCardComparable()
-	{
-		DomCard card1 = new DomCard(1,2);
-		DomCard card2 = new DomCard(1,0);
-		DomCard card3 = new DomCard(5,2);
-		DomCard card4 = new DomCard(3,1);
-		DomCard card5 = new DomCard(2,4);
-		DomCard card6 = new DomCard(1,2);
-		DomCard fcard = new DomCard(6,6);
-
-		assertTrue(card1.compareTo(card2) == 0);
-		assertTrue(card1.compareTo(card3) == 0);
-		assertTrue(card1.compareTo(card4) == 0);
-		assertTrue(card1.compareTo(card5) == 0);
-		assertTrue(card1.compareTo(card6) == 0);
-		assertFalse(card1.compareTo(fcard) == 0);
-	}
 }

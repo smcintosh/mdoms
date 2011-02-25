@@ -22,7 +22,6 @@ package org.moose.mdoms;
  */
 public class
 DomCard
-implements Comparable<DomCard>
 {
 	/**
 	 * The first side
@@ -50,15 +49,4 @@ implements Comparable<DomCard>
 	public int
 	getS2()
 	{ return _s2; }
-	
-	public int
-	compareTo(
-		DomCard other)
-	{
-		int others1 = other.getS1();
-		int others2 = other.getS2();
-
-		return (others1 == _s1 || others1 == _s2 ||
-			others2 == _s1 || others2 == _s2) ? 0 : 1;
-	}
 }
