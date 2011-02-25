@@ -37,6 +37,12 @@ DomDeck
 	private int _biggest;
 
 	public
+	DomDeck()
+	{
+		this(6);
+	}
+
+	public
 	DomDeck(
 		int biggest)
 	{
