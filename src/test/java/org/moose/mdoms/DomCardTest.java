@@ -44,7 +44,8 @@ extends TestCase
 	/**
 	 * @return the suite of tests being tested
 	 */
-	public static Test suite()
+	public static Test
+	suite()
 	{
 		return new TestSuite( DomCardTest.class );
 	}
@@ -52,11 +53,29 @@ extends TestCase
 	/**
 	 * Test to make sure a card is created correctly
 	 */
-	public void testDomCardCreate()
+	public void
+	testDomCardCreate()
 	{
 		DomCard card = new DomCard(1,2);
 
 		assertTrue(card.getS1() == 1);
 		assertTrue(card.getS2() == 2);
+	}
+
+	/**
+	 * Test the equals checker
+	 */
+	public void
+	testDomCardEquals()
+	{
+		DomCard c1 = new DomCard(1,1);
+		DomCard c2 = new DomCard(6,1);
+		DomCard c3 = new DomCard(1,6);
+		DomCard c4 = c1;
+
+		assertTrue(c1.equals(c4) && c4.equals(c1));
+		assertTrue(c2.equals(c3) && c3.equals(c2));
+		assertFalse(c1.equals(c2) || c2.equals(c1));
+		assertFalse(c1.equals(c3) || c3.equals(c1));
 	}
 }

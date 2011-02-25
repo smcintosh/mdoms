@@ -44,15 +44,17 @@ extends TestCase
 	/**
 	 * @return the suite of tests being tested
 	 */
-	public static Test suite()
+	public static Test
+	suite()
 	{
-		return new TestSuite( DomDeckTest.class );
+		return new TestSuite(DomDeckTest.class);
 	}
 
 	/**
 	 * When you specify a valid top value, it should take.
 	 */
-	public void testValidBiggest()
+	public void
+	testValidBiggest()
 	{
 		int big = 6;
 
@@ -64,12 +66,53 @@ extends TestCase
 	 * When you specify an invalid top value, it should print a warning
 	 * and set it to the default size (6).
 	 */
-	public void testInvalidBiggest()
+	public void
+	testInvalidBiggest()
 	{
 		int big = -1;
 		
 		DomDeck theDeck = new DomDeck(big);
 		assertTrue(theDeck.getBiggest() != big);
 		assertTrue(theDeck.getBiggest() == 6);
+	}
+
+	/**
+	 * Check each domino to make sure it is created and stored
+	 */
+	public void
+	testDomCards()
+	{
+		int idx = 0;
+		int biggest = 6;
+		DomDeck theDeck = new DomDeck(biggest);
+
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(0,0)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(0,1)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(2,0)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(3,0)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(0,4)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(5,0)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(6,0)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(1,1)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(1,2)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(1,3)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(4,1)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(5,1)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(6,1)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(2,2)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(2,3)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(2,4)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(5,2)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(2,6)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(3,3)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(4,3)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(3,5)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(3,6)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(4,4)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(4,5)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(6,4)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(5,5)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(5,6)));
+		assertTrue(theDeck.elementAt(idx++).equals(new DomCard(6,6)));
 	}
 }

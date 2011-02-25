@@ -49,4 +49,20 @@ DomCard
 	public int
 	getS2()
 	{ return _s2; }
+
+	public boolean
+	equals(
+		Object o)
+	{
+		boolean rtn = false;
+
+		if (o instanceof DomCard) {
+			DomCard other = (DomCard)o;
+
+			rtn = (other.getS1() == _s1 && other.getS2() == _s2) ||
+				(other.getS1() == _s2 && other.getS2() == _s1);
+		}
+
+		return rtn;
+	}
 }
