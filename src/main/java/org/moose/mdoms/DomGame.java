@@ -38,11 +38,14 @@ DomGame
 	public ArrayList<DomCard>
 	draw()
 	{
-		ArrayList<DomCard> drawnCards = new ArrayList<DomCard>();
-		int startPos = _handNum++*(_theDeck.getBiggest()+1);
+		ArrayList<DomCard> drawnCards = null;
+		if (_handNum >= 0 && _handNum < 4) {
+			drawnCards = new ArrayList<DomCard>();
+			int startPos = _handNum++*(_theDeck.getBiggest()+1);
 
-		for (int i=startPos; i<startPos+_theDeck.getBiggest()+1; ++i) {
-			drawnCards.add(_theDeck.elementAt(i));
+			for (int i=startPos; i<startPos+_theDeck.getBiggest()+1; ++i) {
+				drawnCards.add(_theDeck.elementAt(i));
+			}
 		}
 
 		return drawnCards;
