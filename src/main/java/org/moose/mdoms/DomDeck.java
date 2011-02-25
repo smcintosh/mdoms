@@ -51,8 +51,8 @@ DomDeck
 			System.err.println("Size is invalid. Using 6.");
 		}
 			
-		for (int i=0; i<biggest+1; ++i) {
-			for (int j=i; j<biggest+1; ++j) {
+		for (int i=0; i<_biggest+1; ++i) {
+			for (int j=i; j<_biggest+1; ++j) {
 				theCard = new DomCard(i,j);
 				_dominoes.add(theCard);
 			}
@@ -68,4 +68,8 @@ DomDeck
 	{
 		return (val == 6);
 	}
+
+	public int
+	getBiggest()
+	{ return _biggest; }
 }
