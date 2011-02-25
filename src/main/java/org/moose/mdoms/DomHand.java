@@ -41,6 +41,7 @@ DomHand
 
 		// Deep copy the drawn hand
 		_doms = new ArrayList<DomCard>();
+		_played = new ArrayList<Boolean>();
 
 		for (DomCard card : draw) {
 			_doms.add(new DomCard(card.getS1(), card.getS2()));
@@ -53,6 +54,20 @@ DomHand
 		int idx)
 	{
 		_played.set(idx, new Boolean(true));
+	}
+
+	public boolean
+	canPlayCard(
+		int idx)
+	{
+		return _theGame.isValidMove(_doms.get(idx));
+	}
+
+	public boolean
+	isPlayed(
+		int idx)
+	{
+		return _played.get(idx);
 	}
 
 	public boolean

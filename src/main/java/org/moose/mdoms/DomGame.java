@@ -27,12 +27,18 @@ DomGame
 {
 	private DomDeck _theDeck;
 	private int _handNum;
+	private ArrayList<DomMove> _moves;
+	private int _left;
+	private int _right;
 	
 	public
 	DomGame()
 	{
 		_theDeck = new DomDeck();
 		_handNum = 0;
+		_moves = new ArrayList<DomMove>();
+		_left = -1;
+		_right = -1;
 	}
 
 	public ArrayList<DomCard>
@@ -49,5 +55,47 @@ DomGame
 		}
 
 		return drawnCards;
+	}
+
+	public boolean
+	isValidMove(
+		DomCard card)
+	{
+		return (_left == -1 && _right == -1) ||
+			(card.hasSideMatching(_left) != -1) ||
+			(card.hasSideMatching(_right) != -1);
+	}
+
+	public boolean
+	makeMove(
+		String name,
+		DomCard card)
+	{
+		int newSide = -1;
+		boolean rtn = false;
+
+		if (isValidMove(card)) {
+			rtn = true;
+			if (_left == -1 && _right == -1) {
+				_left = card.getS1();
+				_right = card.getS2();
+				_moves.add(new DomMove(name, card, "f"));
+			} else if (
+				(newSide=card.hasSideMatching(_left)) != -1) {
+
+				_left = newSide;
+				_moves.add(new DomMove(name, card, "l"));
+			} else if (
+				(newSide=card.hasSideMatching(_right)) != -1) {
+
+				_right = newSide;
+				_moves.add(new DomMove(name, card, "r"));
+			} else {
+				System.err.println("Unexpected move case");
+				rtn = false;
+			}
+		}
+		
+		return rtn;
 	}
 }

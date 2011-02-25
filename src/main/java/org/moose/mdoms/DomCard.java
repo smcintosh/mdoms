@@ -65,4 +65,25 @@ DomCard
 
 		return rtn;
 	}
+
+	/**
+	 * Test to see if this card has a side matching the given value.
+	 * @param num 	The number to test against.
+	 * @return	The value of the side not matching if there is a match,
+	 * 		-1 otherwise
+	 */
+	public int
+	hasSideMatching(
+		int num)
+	{
+		int rtn = -1;
+
+		if (_s1 == num) {
+			rtn = _s2;
+		} else if (_s2 == num) {
+			rtn = _s1;
+		}
+
+		return rtn;
+	}
 }
