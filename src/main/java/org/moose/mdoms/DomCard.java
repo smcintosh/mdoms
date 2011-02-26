@@ -86,4 +86,10 @@ DomCard
 
 		return rtn;
 	}
+
+	public boolean
+	isPass()
+	{
+		return _s1 == Integer.MIN_VALUE && _s2 == Integer.MIN_VALUE;
+	}
 }

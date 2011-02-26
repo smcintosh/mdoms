@@ -122,4 +122,23 @@ extends TestCase
 		assertFalse(game.draw() == null);
 		assertTrue(game.draw() == null);
 	}
+
+	public void
+	testDomGamePlayTest()
+	{
+		DomGame game = new DomGame();
+
+		DomHand hand = new DomHand(game);
+		hand.setName("Shane");
+
+		assertTrue(hand.playCard(0)); // 0|0
+		assertTrue(hand.playCard(6)); // 6|0
+		assertTrue(hand.playCard(3)); // 0|3
+		assertFalse(hand.playCard(1));
+		assertFalse(hand.playCard(2));
+		assertFalse(hand.playCard(4));
+		assertFalse(hand.playCard(5));
+
+		game.printMoves();
+	}
 }

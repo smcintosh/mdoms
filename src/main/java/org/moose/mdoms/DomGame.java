@@ -30,6 +30,7 @@ DomGame
 	private ArrayList<DomMove> _moves;
 	private int _left;
 	private int _right;
+	private String _curPlayer;
 	
 	public
 	DomGame()
@@ -94,8 +95,20 @@ DomGame
 				System.err.println("Unexpected move case");
 				rtn = false;
 			}
+		} else if (card.isPass()) {
+			rtn = true;
+			_moves.add(new DomMove(name, card, "p"));
 		}
 		
 		return rtn;
+	}
+
+	public void
+	printMoves()
+	{
+		for (DomMove move : _moves) {
+			move.print();
+			System.out.println();
+		}
 	}
 }

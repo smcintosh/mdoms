@@ -49,4 +49,13 @@ DomMove
 	public String
 	getSide()
 	{ return _side; }
+
+	public void
+	print()
+	{
+		System.out.println("Name: " + _name);
+		System.out.println(
+			"Card: " + _card.getS1() + "|" + _card.getS2());
+		System.out.println("Name: " + _name);
+	}
 }

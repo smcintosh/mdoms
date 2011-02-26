@@ -28,7 +28,8 @@ DomHand
 	private ArrayList<DomCard> _doms;
 	private ArrayList<Boolean> _played;
 
-	private DomGame _theGame;
+	private DomGame _game;
+	private String _playerName;
 
 	public
 	DomHand(
@@ -36,8 +37,8 @@ DomHand
 	{
 		ArrayList<DomCard> draw = null;
 
-		_theGame = game;
-		draw = _theGame.draw();
+		_game = game;
+		draw = _game.draw();
 
 		// Deep copy the drawn hand
 		_doms = new ArrayList<DomCard>();
@@ -47,20 +48,34 @@ DomHand
 			_doms.add(new DomCard(card.getS1(), card.getS2()));
 			_played.add(new Boolean(false));
 		}
+
+		_playerName = "NoName";
 	}
 
 	public void
+	setName(
+		String name)
+	{ _playerName = name; }
+
+	public boolean
 	playCard(
 		int idx)
 	{
-		_played.set(idx, new Boolean(true));
+		boolean rtn = false;
+
+		if (_game.makeMove(_playerName, _doms.get(idx))) {
+			_played.set(idx, new Boolean(true));
+			rtn = true;
+		}
+
+		return rtn;
 	}
 
 	public boolean
 	canPlayCard(
 		int idx)
 	{
-		return _theGame.isValidMove(_doms.get(idx));
+		return _game.isValidMove(_doms.get(idx));
 	}
 
 	public boolean
