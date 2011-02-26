@@ -17,6 +17,8 @@
  */
 package org.moose.mdoms;
 
+import java.io.IOException;
+
 /**
  * The msg to send
  */

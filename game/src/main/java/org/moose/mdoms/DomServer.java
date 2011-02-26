@@ -17,6 +17,11 @@
  */
 package org.moose.mdoms;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+
 /**
  * The server for a dominoes game
  */
@@ -29,6 +34,7 @@ DomServer
 	
 	public
 	DomServer()
+	throws IOException
 	{
 		_game = new DomGame();
 		_svrSock = new ServerSocket(CommConstants.SOCK_PORT);
@@ -38,12 +44,18 @@ DomServer
 	listen()
 	{
 		Socket aSocket = null;
+		DomHandle h = null;
 
 		while (true) {
 			try {
 				aSocket = _svrSock.accept();
 				if (didHandshake(aSocket)) {
+					h = new DomHandle(aSocket);
+					h.start();
+					_players.add(h);
 				} else {
+					throw new IOException(
+						"Invalid handshake detected");
 				}
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
@@ -70,7 +82,8 @@ DomServer
 
 	private boolean
 	didHandshake(
-		Socket sock)
+		Socket s)
+	throws IOException
 	{
 		HandshakeMsg msg = new HandshakeMsg(
 			new MooseInputStream(s.getInputStream()));
