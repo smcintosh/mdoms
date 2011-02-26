@@ -10,5 +10,6 @@
   <modules>
     <module>game</module>
     <module>comm</module>
+    <module>svr</module>
   </modules>
 </project>
