@@ -11,5 +11,6 @@
     <module>game</module>
     <module>comm</module>
     <module>svr</module>
+    <module>clnt</module>
   </modules>
 </project>
